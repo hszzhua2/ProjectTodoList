@@ -1,0 +1,679 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* 导入自定义样式 */
+@import './styles/custom.css';
+
+/* 应用根样式 */
+#root {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  transition: background 0.3s ease;
+}
+
+/* 深色模式根样式 */
+.dark #root {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* 应用容器 */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 头部样式 */
+.app-header {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: all 0.3s ease;
+}
+
+/* 深色模式头部样式 */
+.dark .app-header {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-bottom: 1px solid #475569;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+.header-title {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.header-subtitle {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* 主内容区域 */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 标签页样式 */
+.tabs-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 页脚样式 */
+.app-footer {
+  background: white;
+  border-top: 1px solid #e2e8f0;
+  margin-top: auto;
+  transition: all 0.3s ease;
+}
+
+/* 深色模式页脚样式 */
+.dark .app-footer {
+  background: #1e293b;
+  border-top: 1px solid #475569;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.footer-text {
+  color: #64748b;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 1rem;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .header-title {
+    font-size: 1.25rem;
+  }
+  
+  .footer-content {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-content {
+    padding: 0.75rem;
+  }
+  
+  .main-content {
+    padding: 0.75rem;
+  }
+}
+
+/* 全屏甘特图样式 */
+.fullscreen-gantt {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.fullscreen-gantt .gantt-header {
+  flex-shrink: 0;
+}
+
+.fullscreen-gantt .gantt-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* 横向甘特图特定样式 */
+.horizontal-gantt-grid {
+  display: grid;
+  grid-template-columns: 200px repeat(auto-fit, minmax(250px, 1fr));
+  min-height: 100%;
+}
+
+.horizontal-gantt-cell {
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  min-height: 80px;
+}
+
+.horizontal-gantt-header {
+  background: #f8fafc;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.horizontal-gantt-link-header {
+  background: white;
+  font-weight: 500;
+  position: sticky;
+  left: 0;
+  z-index: 5;
+}
+
+/* 优化滚动条 */
+.horizontal-gantt-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.horizontal-gantt-scroll::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.horizontal-gantt-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.horizontal-gantt-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+  .horizontal-gantt-grid {
+    grid-template-columns: 150px repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .horizontal-gantt-grid {
+    grid-template-columns: 120px repeat(auto-fit, minmax(180px, 1fr));
+  }
+  
+  .header-content {
+    padding: 0.75rem 1rem;
+  }
+  
+  .header-title {
+    font-size: 1.125rem;
+  }
+}
+
+/* 深色模式文本颜色 */
+.dark .header-title {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .header-subtitle {
+  color: #94a3b8;
+}
+
+.dark .footer-text {
+  color: #94a3b8;
+}
+
+/* 深色模式表格和卡片样式 */
+.dark .enhanced-card {
+  background: #1e293b;
+  border-color: #475569;
+}
+
+.dark .enhanced-card:hover {
+  border-color: #64748b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 深色模式甘特图样式 */
+.dark .gantt-container {
+  background: #1e293b;
+  border-color: #475569;
+}
+
+.dark .gantt-header {
+  background: linear-gradient(135deg, #334155, #475569);
+  border-bottom-color: #64748b;
+}
+
+.dark .horizontal-gantt-header {
+  background: #334155;
+  border-bottom-color: #64748b;
+}
+
+.dark .horizontal-gantt-link-header {
+  background: #1e293b;
+  border-right-color: #475569;
+}
+
+.dark .horizontal-gantt-cell {
+  border-right-color: #475569;
+  border-bottom-color: #475569;
+}
+
+.dark .horizontal-gantt-cell:hover {
+  background: #334155;
+}
+
+/* 深色模式滚动条优化 */
+.dark .horizontal-gantt-scroll::-webkit-scrollbar-track {
+  background: #334155;
+}
+
+.dark .horizontal-gantt-scroll::-webkit-scrollbar-thumb {
+  background: #64748b;
+}
+
+.dark .horizontal-gantt-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: #334155;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #64748b;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* 优化表格对齐 */
+.table-aligned {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table-aligned th,
+.table-aligned td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.75rem;
+  word-wrap: break-word;
+}
+
+.table-aligned th:first-child,
+.table-aligned td:first-child {
+  width: 200px;
+  min-width: 200px;
+  max-width: 200px;
+}
+
+/* 横向甘特图表格对齐优化 */
+.horizontal-gantt-grid {
+  display: grid;
+  grid-template-columns: 200px repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0;
+  width: 100%;
+  min-width: fit-content;
+}
+
+.horizontal-gantt-cell {
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.dark .horizontal-gantt-cell {
+  border-right-color: #475569;
+  border-bottom-color: #475569;
+}
+
+/* 流畅滚动优化 */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-container {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.dark .scroll-container {
+  scrollbar-color: #64748b #334155;
+}
+
+/* 优化滚动性能 */
+.scroll-optimized {
+  will-change: scroll-position;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* 自定义滚动条样式增强 */
+.enhanced-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.enhanced-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+  margin: 2px;
+}
+
+.enhanced-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+.enhanced-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+}
+
+.dark .enhanced-scrollbar::-webkit-scrollbar-track {
+  background: #334155;
+}
+
+.dark .enhanced-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #64748b, #475569);
+  border-color: #475569;
+}
+
+.dark .enhanced-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #94a3b8, #64748b);
+}
+
+/* 表格行悬停效果优化 */
+.table-row-hover {
+  transition: all 0.2s ease;
+}
+
+.table-row-hover:hover {
+  background: rgba(59, 130, 246, 0.05);
+  transform: translateX(2px);
+}
+
+.dark .table-row-hover:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* 链路行对齐优化 */
+.link-row-aligned {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem;
+  align-items: start;
+  min-height: 60px;
+}
+
+/* 事项卡片对齐优化 */
+.item-card-aligned {
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 深色模式按钮样式 */
+.dark .btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border: none;
+  color: white;
+}
+
+.dark .btn-primary:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+}
+
+.dark .btn-secondary {
+  background: #374151;
+  border: 1px solid #4b5563;
+  color: #f9fafb;
+}
+
+.dark .btn-secondary:hover {
+  background: #4b5563;
+  border-color: #6b7280;
+}
+
+/* 深色模式状态指示器 */
+.dark .status-todo {
+  background: linear-gradient(135deg, #374151, #4b5563);
+  border-color: #6b7280;
+  color: #d1d5db;
+}
+
+.dark .status-in-progress {
+  background: linear-gradient(135deg, #1e3a8a, #3730a3);
+  border-color: #4338ca;
+  color: #a5b4fc;
+}
+
+.dark .status-done {
+  background: linear-gradient(135deg, #064e3b, #065f46);
+  border-color: #059669;
+  color: #6ee7b7;
+}
+
+/* 深色模式优先级颜色 */
+.dark .priority-high {
+  background: linear-gradient(135deg, #7f1d1d, #991b1b);
+  border-color: #dc2626;
+  color: #fca5a5;
+}
+
+.dark .priority-medium {
+  background: linear-gradient(135deg, #78350f, #92400e);
+  border-color: #d97706;
+  color: #fcd34d;
+}
+
+.dark .priority-low {
+  background: linear-gradient(135deg, #064e3b, #065f46);
+  border-color: #059669;
+  color: #6ee7b7;
+}
+
+/* 深色模式加载动画 */
+.dark .loading-skeleton {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* 深色模式模态框 */
+.dark .modal-overlay {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* 响应式优化 */
+@media (max-width: 1024px) {
+  .horizontal-gantt-grid {
+    grid-template-columns: 150px repeat(auto-fit, minmax(180px, 1fr));
+  }
+  
+  .table-aligned th:first-child,
+  .table-aligned td:first-child {
+    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .horizontal-gantt-grid {
+    grid-template-columns: 120px repeat(auto-fit, minmax(160px, 1fr));
+  }
+  
+  .table-aligned th:first-child,
+  .table-aligned td:first-child {
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+  }
+  
+  .enhanced-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* 动画性能优化 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .dark .enhanced-card {
+    border-width: 2px;
+  }
+  
+  .dark .horizontal-gantt-cell {
+    border-width: 2px;
+  }
+}
